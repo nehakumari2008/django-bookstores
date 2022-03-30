@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Book Stores</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <table class="table">
+                        {% for store in stores %}
+                            <tr>
+                                <th><a href="/store/{{ store.id }}/books/">{{ store.name }}</a></th>
+                                <th><a href="/store/{{ store.id }}/edit/">Edit</a></th>
+                                <th><a href="/store/{{ store.id }}/delete/">Delete</a></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br>
+                    <a class="btn btn-primary" href="/store/create/">Create Store</a>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <p>Welcome, new user. Please <a href="/register/login/">Login</a></p>
+    {% endif %}
+
+{% endblock %}
+
+

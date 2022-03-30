@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book</title>
+</head>
+
+
+</html>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">View all Books in {{ store.name }}</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                  {% if user.is_authenticated %}
+
+                    <h2>Name: {{ book.name }}</h2>
+                    <h3>Author: {{ book.author }}</h3>
+                    <h3>Price: {{ book.price }}</h3>
+                    <h3>No of copies : {{ book.no_of_copies }}</h3>
+                    <h3>Store: {{ book.store }}</h3>
+                    <h3>Google Book Id: {{ book.google_book_id }}</h3>
+
+                    <a class="btn btn-primary" href="/store/{{ store.id }}/books/">View all books</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
