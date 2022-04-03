@@ -1,5 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
+
+
+User._meta.get_field('email')._unique = True
 
 # Create your models here.
 class Store(models.Model):

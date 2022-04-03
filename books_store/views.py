@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -19,7 +20,10 @@ def register(request):
             form = RegisterForm(request.POST)
             if form.is_valid():
                 form.save()
-            return HttpResponseRedirect('/store/')
+                return HttpResponseRedirect('/store/')
+            else:
+                for msg in form.error_messages:
+                    messages.error(request, f"{msg}: {form.error_messages[msg]}")
         else:
             form = RegisterForm()
         return render(request, "registration/register.html", {"form": form})
