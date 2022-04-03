@@ -34,7 +34,7 @@ $ python manage.py runserver
 > Go to http://localhost:8000 to use the application
 
 ## Endpoints
-###Authentication System
+### Authentication System
 > User Registration
 ```http request
 /accounts/register/
